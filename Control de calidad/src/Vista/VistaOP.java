@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import javax.swing.JComboBox;
+
 /**
  *
  * @author paezm
@@ -132,4 +134,24 @@ public class VistaOP extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     // End of variables declaration//GEN-END:variables
+
+    public JComboBox<String> getjComboBox1() {
+        return jComboBox1;
+    }
+
+    public void setjComboBox1(JComboBox<String> jComboBox1) {
+        this.jComboBox1 = jComboBox1;
+    }
+
+    public JComboBox<String> getjComboBox2() {
+        return jComboBox2;
+    }
+
+    public void setjComboBox2(JComboBox<String> jComboBox2) {
+        this.jComboBox2 = jComboBox2;
+    }
+
+
+    
+
 }

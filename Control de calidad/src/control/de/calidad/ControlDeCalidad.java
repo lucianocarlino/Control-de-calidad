@@ -6,6 +6,7 @@ package control.de.calidad;
 
 import Vista.VistaLogin;
 import Vista.VistaMenu;
+import Controlador.*;
 
 /**
  *
@@ -17,7 +18,11 @@ public class ControlDeCalidad {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new VistaLogin().setVisible(true);
+        
+        
+        
+        LoginController loginController = new LoginController();
+        loginController.mostrar();
     }
     
 }

@@ -35,7 +35,20 @@ public class Datos {
 
     public Datos() {
         
+        //Agregar modelos
         
+        modelos[0] = new ModeloDeZapatilla("verde", "Lindo");
+        modelos[1] = new ModeloDeZapatilla("Azul", "Feo");
+        
+    }
+    
+    public String[] getSKU(){
+        
+        String SKUs[] = new String[3];
+        for (int x=0; x<3; x++){
+            SKUs[x] = modelos[x].getSKU();
+        }
+        return SKUs;
     }
     
 }
