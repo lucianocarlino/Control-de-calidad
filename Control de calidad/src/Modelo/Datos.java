@@ -4,6 +4,8 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author User
@@ -15,8 +17,10 @@ public class Datos {
     private int idOrdenes = 0;
     private int codEstados[] = new int[3];
     private String descEstados[] = new String[3];
+    private ArrayList<Color> colors = new ArrayList<>();
+    private ArrayList<ModeloDeZapatilla> models = new ArrayList<>();
     
-
+    
     public Color[] getColores() {
         return colores;
     }
@@ -36,6 +40,16 @@ public class Datos {
     public Datos() {
         
         //Agregar modelos
+        
+        colors.add(new Color("Rojo", 111));
+        colors.add(new Color("Azul", 111));
+        colors.add(new Color("Amarillo", 111));
+        colors.add(new Color("Verde", 111));
+        colors.add(new Color("Morado", 111));
+        
+        models.add(new ModeloDeZapatilla("111", "Lindo"));
+        models.add(new ModeloDeZapatilla("222", "Feo"));
+        models.add(new ModeloDeZapatilla("333", "Masomenos"));
         
         modelos[0] = new ModeloDeZapatilla("111", "Lindo");
         modelos[1] = new ModeloDeZapatilla("222", "Feo");
@@ -80,4 +94,22 @@ public class Datos {
     public String toString() {
         return "Datos{" + "colores=" + colores + ", modelos=" + modelos + ", idOrdenes=" + idOrdenes + ", codEstados=" + codEstados + ", descEstados=" + descEstados + '}';
     }
+
+    public ArrayList<Color> getColors() {
+        return colors;
+    }
+
+    public void setColors(ArrayList<Color> colors) {
+        this.colors = colors;
+    }
+
+    public ArrayList<ModeloDeZapatilla> getModels() {
+        return models;
+    }
+
+    public void setModels(ArrayList<ModeloDeZapatilla> models) {
+        this.models = models;
+    }
+    
+    
 }

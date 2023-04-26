@@ -160,4 +160,54 @@ public class GestionColores extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JButton getjButton1() {
+        return jButton1;
+    }
+
+    public void setjButton1(javax.swing.JButton jButton1) {
+        this.jButton1 = jButton1;
+    }
+
+    public javax.swing.JButton getjButton2() {
+        return jButton2;
+    }
+
+    public void setjButton2(javax.swing.JButton jButton2) {
+        this.jButton2 = jButton2;
+    }
+
+    public javax.swing.JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(javax.swing.JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public javax.swing.JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(javax.swing.JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public javax.swing.JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(javax.swing.JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public javax.swing.JTable getjTable1() {
+        return jTable1;
+    }
+
+    public void setjTable1(javax.swing.JTable jTable1) {
+        this.jTable1 = jTable1;
+    }
+
+    
 }

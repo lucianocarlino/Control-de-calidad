@@ -24,13 +24,11 @@ public class MenuController {
     
     public static void btnColores(){
         ColoresController.mostrar();
-        
         ocultar();
     }
     
     public static void btnModelos(){
         ModelosController.mostrar();
-        
         ocultar();
     }
 }
