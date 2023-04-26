@@ -8,6 +8,7 @@ import Vista.VistaOP;
 import Vista.VistaMenu;
 import Vista.*; 
 import Modelo.*;
+import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -22,15 +23,15 @@ public class OpController {
     public static void ocultar(){ventana.setVisible(false);}
     
     public static void actualizar(){
-        Datos datos = new Datos();
-        String skus[] = datos.getSKU();
-        String colores[] = datos.getDescripciones();
+        
+        Object SKUs[] = DatosController.datos.getSKUA();
+        Object coloress[] = DatosController.datos.getDescripcionesA();
 
         JComboBox modelos = ventana.getjComboBox1();
-        modelos.setModel(new DefaultComboBoxModel(skus));
+        modelos.setModel(new DefaultComboBoxModel(SKUs));
 
         JComboBox listaColores = ventana.getjComboBox2();
-        listaColores.setModel(new DefaultComboBoxModel(colores));
+        listaColores.setModel(new DefaultComboBoxModel(coloress));
     }
     
     public static void btnCancelar(){

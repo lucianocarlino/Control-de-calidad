@@ -12,87 +12,42 @@ import java.util.ArrayList;
  */
 public class Datos {
     
-    private Color colores[] = new Color[5];
-    private ModeloDeZapatilla modelos[] = new ModeloDeZapatilla[3];
     private int idOrdenes = 0;
-    private int codEstados[] = new int[3];
-    private String descEstados[] = new String[3];
     private ArrayList<Color> colors = new ArrayList<>();
     private ArrayList<ModeloDeZapatilla> models = new ArrayList<>();
-    
-    
-    public Color[] getColores() {
-        return colores;
-    }
-
-    public void setColores(Color[] colores) {
-        this.colores = colores;
-    }
-
-    public ModeloDeZapatilla[] getModelos() {
-        return modelos;
-    }
-
-    public void setModelos(ModeloDeZapatilla[] modelos) {
-        this.modelos = modelos;
-    }
 
     public Datos() {
         
         //Agregar modelos
         
         colors.add(new Color("Rojo", 111));
-        colors.add(new Color("Azul", 111));
-        colors.add(new Color("Amarillo", 111));
-        colors.add(new Color("Verde", 111));
-        colors.add(new Color("Morado", 111));
+        colors.add(new Color("Azul", 222));
+        colors.add(new Color("Amarillo", 333));
+        colors.add(new Color("Verde", 444));
+        colors.add(new Color("Morado", 555));
         
         models.add(new ModeloDeZapatilla("111", "Lindo"));
         models.add(new ModeloDeZapatilla("222", "Feo"));
         models.add(new ModeloDeZapatilla("333", "Masomenos"));
         
-        modelos[0] = new ModeloDeZapatilla("111", "Lindo");
-        modelos[1] = new ModeloDeZapatilla("222", "Feo");
-        modelos[2] = new ModeloDeZapatilla("333", "Masomenos");
-        
-        colores[0] = new Color("Rojo", 111);
-        colores[1] = new Color("Azul", 111);
-        colores[2] = new Color("Amarillo", 111);
-        colores[3] = new Color("Verde", 111);
-        colores[4] = new Color("Morado", 111);
-        
     }
     
-    public String[] getSKU(){
+    public Object[] getSKUA(){
         
-        String SKUs[] = new String[3];
-        for (int x=0; x<3; x++){
-            SKUs[x] = modelos[x].getSKU();
+        ArrayList<String> SKUs = new ArrayList<>();
+        for (ModeloDeZapatilla m : models){
+            SKUs.add(m.getSKU());
         }
-        return SKUs;
+        return SKUs.toArray();
     }
     
-    public int[] getCodigos(){
+    public Object[] getDescripcionesA(){
         
-        int codigos[] = new int[5];
-        for (int x=0; x<5; x++){
-            codigos[x] = colores[x].getCodigo();
+        ArrayList<String> descrip = new ArrayList<>();
+        for (Color m : colors){
+            descrip.add(m.getDescripcion());
         }
-        return codigos;
-    }
-    
-    public String[] getDescripciones(){
-        
-        String descripciones[] = new String[5];
-        for (int x=0; x<5; x++){
-            descripciones[x] = colores[x].getDescripcion();
-        }
-        return descripciones;
-    }
-
-    @Override
-    public String toString() {
-        return "Datos{" + "colores=" + colores + ", modelos=" + modelos + ", idOrdenes=" + idOrdenes + ", codEstados=" + codEstados + ", descEstados=" + descEstados + '}';
+        return descrip.toArray();
     }
 
     public ArrayList<Color> getColors() {

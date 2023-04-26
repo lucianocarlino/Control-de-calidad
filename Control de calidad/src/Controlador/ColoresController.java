@@ -6,6 +6,7 @@ package Controlador;
 
 import Modelo.Color;
 import Modelo.Datos;
+import Vista.AgregarColor;
 import Vista.GestionColores;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -14,6 +15,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ColoresController {
     public static GestionColores ventana = new GestionColores();
+    public static AgregarColor ventAgregar = new AgregarColor();
+    Datos datos = new Datos();
+    
     public static void mostrar(){ 
         ventana.setVisible(true); 
         ventana.setLocationRelativeTo(null);
@@ -24,16 +28,44 @@ public class ColoresController {
     
     public static void actualizarTabla(){
         DefaultTableModel tabla = (DefaultTableModel) ventana.getjTable1().getModel();
-        Datos datos = new Datos();
-        
+               
         tabla.setNumRows(0);
-        for(Color p : datos.getColors()){
-            Object[] fila = new Object[10];
+        for(Color p : DatosController.datos.getColors()){
+            Object[] fila = new Object[2];
             
             fila[0] = p.getCodigo();
             fila[1] = p.getDescripcion();
             
             tabla.addRow(fila);
         }
+    }
+    
+    public static void btnCrear(){
+        mostrarAgregar();
+    }
+    
+    public static void mostrarAgregar(){
+        ventAgregar.setVisible(true); 
+        ventAgregar.setLocationRelativeTo(null);
+        ventAgregar.getTfCodigo().setText("");
+        ventAgregar.getTfDescripcion().setText("");
+    }
+    
+    public static void btnEliminar(){
+        
+    }
+    
+    public static void btnAgregar(){
+        
+        int codigo = Integer.parseInt(ventAgregar.getTfCodigo().getText());
+        String descripcion = ventAgregar.getTfDescripcion().getText();
+        
+        Color nuevo = new Color(descripcion, codigo);
+        
+        DatosController.AgregarColor(nuevo);
+        
+        ventAgregar.getTfCodigo().setText("");
+        ventAgregar.getTfDescripcion().setText("");
+        actualizarTabla();
     }
 }
