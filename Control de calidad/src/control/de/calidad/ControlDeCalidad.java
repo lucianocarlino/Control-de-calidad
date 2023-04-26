@@ -4,6 +4,9 @@
  */
 package control.de.calidad;
 
+import Vista.VistaLogin;
+import Vista.VistaMenu;
+
 /**
  *
  * @author User
@@ -14,7 +17,7 @@ public class ControlDeCalidad {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        new VistaLogin().setVisible(true);
     }
     
 }
