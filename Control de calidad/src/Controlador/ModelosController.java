@@ -66,8 +66,13 @@ public class ModelosController {
     
     public static void btnAgregar(){
         
-        String sku = ventAgregar.getTfSKU().getText();
-        String denominacion = ventAgregar.getTfDenominacion().getText();
+        String sku = ventAgregar.getTfSKU().getText().trim();
+        String denominacion = ventAgregar.getTfDenominacion().getText().trim();
+        
+        if(sku.equals("") || denominacion.equals("")){
+            JOptionPane.showMessageDialog(ventana, "Error: Rellene los campos");
+            return;
+        }
         
         ModeloDeZapatilla nuevo = new ModeloDeZapatilla(sku, denominacion);
         

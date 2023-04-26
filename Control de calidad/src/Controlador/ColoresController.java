@@ -66,18 +66,25 @@ public class ColoresController {
     
     public static void btnAgregar(){
         
-        int codigo = Integer.parseInt(ventAgregar.getTfCodigo().getText());
-        String descripcion = ventAgregar.getTfDescripcion().getText();
+        String cadCodigo = ventAgregar.getTfCodigo().getText().trim();
+        String descripcion = ventAgregar.getTfDescripcion().getText().trim();
+        int codigo = 0;
+        
+        if(cadCodigo.equals("") || descripcion.equals("")){
+            JOptionPane.showMessageDialog(ventana, "Error: Rellene los campos");
+            return;
+        }
+        
+        try{
+            codigo = Integer.parseInt(cadCodigo);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(ventana, "Error: " + e.getMessage());
+            return;
+        }
         
         Color nuevo = new Color(descripcion, codigo);
         
         System.out.println(codigo);
-        
-        if(codigo == 0 || descripcion == ""){
-            JOptionPane.showMessageDialog(ventana, "Error: Rellene los campos");
-            return;
-        }
-            
         
         if(!DatosController.AgregarColor(nuevo))
             JOptionPane.showMessageDialog(ventana, "Error: Codigo ya usado");
