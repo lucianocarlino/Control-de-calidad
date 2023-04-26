@@ -18,5 +18,6 @@ public class MenuController {
     
     public static void botonOp(){
         OpController.mostrar();
+        OpController.actualizar();
     }
 }

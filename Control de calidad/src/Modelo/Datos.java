@@ -37,8 +37,15 @@ public class Datos {
         
         //Agregar modelos
         
-        modelos[0] = new ModeloDeZapatilla("verde", "Lindo");
-        modelos[1] = new ModeloDeZapatilla("Azul", "Feo");
+        modelos[0] = new ModeloDeZapatilla("111", "Lindo");
+        modelos[1] = new ModeloDeZapatilla("222", "Feo");
+        modelos[2] = new ModeloDeZapatilla("333", "Masomenos");
+        
+        colores[0] = new Color("Rojo", 111);
+        colores[1] = new Color("Azul", 111);
+        colores[2] = new Color("Amarillo", 111);
+        colores[3] = new Color("Verde", 111);
+        colores[4] = new Color("Morado", 111);
         
     }
     
@@ -51,4 +58,26 @@ public class Datos {
         return SKUs;
     }
     
+    public int[] getCodigos(){
+        
+        int codigos[] = new int[5];
+        for (int x=0; x<5; x++){
+            codigos[x] = colores[x].getCodigo();
+        }
+        return codigos;
+    }
+    
+    public String[] getDescripciones(){
+        
+        String descripciones[] = new String[5];
+        for (int x=0; x<5; x++){
+            descripciones[x] = colores[x].getDescripcion();
+        }
+        return descripciones;
+    }
+
+    @Override
+    public String toString() {
+        return "Datos{" + "colores=" + colores + ", modelos=" + modelos + ", idOrdenes=" + idOrdenes + ", codEstados=" + codEstados + ", descEstados=" + descEstados + '}';
+    }
 }

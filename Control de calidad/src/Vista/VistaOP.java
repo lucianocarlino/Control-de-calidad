@@ -43,7 +43,7 @@ public class VistaOP extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Crear Orden de Producción");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "modelo 1 ", "modelo 2 ", "modelo 3", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "modelo 1", "modelo 2", "modelo 3", "" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -140,6 +140,7 @@ public class VistaOP extends javax.swing.JFrame {
     }
 
     public void setjComboBox1(JComboBox<String> jComboBox1) {
+        System.out.println("Updating jComboBox1");
         this.jComboBox1 = jComboBox1;
     }
 
