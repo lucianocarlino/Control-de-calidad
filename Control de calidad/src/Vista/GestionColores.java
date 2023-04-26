@@ -9,12 +9,12 @@ package Vista;
  *
  * @author facundo
  */
-public class GestionModelos extends javax.swing.JFrame {
+public class GestionColores extends javax.swing.JFrame {
 
     /**
      * Creates new form GestionModelos
      */
-    public GestionModelos() {
+    public GestionColores() {
         initComponents();
     }
 
@@ -35,22 +35,21 @@ public class GestionModelos extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(750, 470));
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Liberation Sans", 3, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Gestión de Modelos");
+        jLabel1.setText("Gestión de Colores");
 
         jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
-        jLabel2.setText("Modelos disponibles");
+        jLabel2.setText("Colores disponibles");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "SKU", "Denominación"
+                "Código", "Descripción"
             }
         ) {
             Class[] types = new Class [] {
