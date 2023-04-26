@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import javax.swing.JToggleButton;
+
 /**
  *
  * @author paezm
@@ -127,4 +129,8 @@ public class VistaMenu extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     // End of variables declaration//GEN-END:variables
+
+    public JToggleButton getjToggleButton1() {
+        return jToggleButton1;
+    }
 }

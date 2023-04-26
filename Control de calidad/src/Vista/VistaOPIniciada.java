@@ -42,7 +42,6 @@ public class VistaOPIniciada extends javax.swing.JFrame {
         labelModelo = new javax.swing.JLabel();
         labelColor = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);

@@ -25,6 +25,11 @@ public class OpController {
     public static VistaOP ventana = new VistaOP();
     public static VistaOPIniciada ventanaOPI = new VistaOPIniciada();
     public static void mostrar(){ ventana.setVisible(true); ventana.setLocationRelativeTo(null);}
+    public static void mostrarOPI(){
+        ventanaOPI.setValores(DatosController.datos.getOrdenDeProduccion());
+        ventanaOPI.setLocationRelativeTo(null);
+        ventanaOPI.setVisible(true);
+    }
     public static void ocultar(){ventana.setVisible(false);}
     
     public static void cerrar() {
@@ -64,9 +69,7 @@ public class OpController {
             ventana.getjToggleButton1().setEnabled(false);
             ventana.getjToggleButton2().setEnabled(false);
             
-            ventanaOPI.setValores(DatosController.datos.getOrdenDeProduccion());
-            ventanaOPI.setLocationRelativeTo(null);
-            ventanaOPI.setVisible(true);
+            mostrarOPI();
         }
         else {
             JOptionPane.showMessageDialog(ventana, "Error iniciando la orden de produccion");
