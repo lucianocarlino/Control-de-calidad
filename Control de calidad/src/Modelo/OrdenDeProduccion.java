@@ -9,6 +9,9 @@ package Modelo;
  * @author User
  */
 public class OrdenDeProduccion {
+
+    public final static int NULA = 0;
+    public final static int INICIADA = 1;
     
     private long id;
     private int estado;
@@ -28,6 +31,11 @@ public class OrdenDeProduccion {
         this.modelo = modelo;
         this.color = color;
         this.supervisor = supervisor;
+        this.estado = INICIADA;
+    }
+
+    OrdenDeProduccion() {
+        this.estado = NULA;
     }
 
     public SupervisorDeLinea getSupervisor() {

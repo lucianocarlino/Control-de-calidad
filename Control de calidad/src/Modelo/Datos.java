@@ -11,10 +11,16 @@ import java.util.ArrayList;
  * @author User
  */
 public class Datos {
+    public static final int LOGGEDIN = 1;
+    public static final int CONTRASEÑA_INCORRECTA = -1;
+    public static final int USUARIO_INEXISTENTE = -2;
     
     private int idOrdenes = 0;
+    private Usuario loggedIn;
     private ArrayList<Color> colors = new ArrayList<>();
     private ArrayList<ModeloDeZapatilla> models = new ArrayList<>();
+    private OrdenDeProduccion ordenDeProduccion;
+    private ArrayList<Usuario> usuarios = new ArrayList<>();
 
     public Datos() {
         
@@ -30,6 +36,10 @@ public class Datos {
         models.add(new ModeloDeZapatilla("222", "Feo"));
         models.add(new ModeloDeZapatilla("333", "Masomenos"));
         
+        usuarios.add(new SupervisorDeLinea(1, "admin", "1234", 1234, "supervisor", "sup@mail.com"));
+        
+        ordenDeProduccion = new OrdenDeProduccion();
+        
     }
     
     public Object[] getSKUA(){
@@ -41,13 +51,13 @@ public class Datos {
         return SKUs.toArray();
     }
     
-    public Object[] getDescripcionesA(){
+    public Object[] getCodigosA(){
         
-        ArrayList<String> descrip = new ArrayList<>();
+        ArrayList<Integer> codigos = new ArrayList<>();
         for (Color m : colors){
-            descrip.add(m.getDescripcion());
+            codigos.add(m.getCodigo());
         }
-        return descrip.toArray();
+        return codigos.toArray();
     }
     
     public void eliminarColor(int codigo){
@@ -93,4 +103,53 @@ public class Datos {
     public void setModels(ArrayList<ModeloDeZapatilla> models) {
         this.models = models;
     }
+    
+    public boolean iniciarOP(long id, int dia, int mes, int año, ModeloDeZapatilla modelo, Color color, SupervisorDeLinea supervisor) {
+        if (ordenDeProduccion.getEstado() == OrdenDeProduccion.NULA){
+            ordenDeProduccion = new OrdenDeProduccion(id, dia, mes, año, modelo, color, supervisor);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public OrdenDeProduccion getOrdenDeProduccion() {
+        return ordenDeProduccion;
+    }
+    
+    public Usuario getUsuarioPorId(int id) {
+        Usuario usuario = new Usuario();
+        
+        for (Usuario u: usuarios) {
+            if (u.getId() == id) {
+                usuario = u;
+                break;
+            }
+        }
+        
+        return usuario;
+    }
+    
+    public Usuario getUsuarioPorUsername(String nombre) {
+        Usuario usuario = new Usuario();
+        
+        for (Usuario u: usuarios) {
+            if (u.getNombreDeUsuario().equals(nombre)) {
+                usuario = u;
+                break;
+            }
+        }
+        
+        return usuario;
+    }
+
+    public Usuario getLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(Usuario loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+    
 }

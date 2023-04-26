@@ -6,6 +6,7 @@ package Vista;
 
 import Controlador.OpController;
 import javax.swing.JComboBox;
+import javax.swing.JToggleButton;
 
 /**
  *
@@ -39,6 +40,11 @@ public class VistaOP extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -128,12 +134,16 @@ public class VistaOP extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-       
+        OpController.btnIniciar();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         OpController.btnCancelar();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        OpController.cerrar();
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;
@@ -162,7 +172,20 @@ public class VistaOP extends javax.swing.JFrame {
         this.jComboBox2 = jComboBox2;
     }
 
+    public JToggleButton getjToggleButton1() {
+        return jToggleButton1;
+    }
 
-    
+    public void setjToggleButton1(JToggleButton jToggleButton1) {
+        this.jToggleButton1 = jToggleButton1;
+    }
+
+    public JToggleButton getjToggleButton2() {
+        return jToggleButton2;
+    }
+
+    public void setjToggleButton2(JToggleButton jToggleButton2) {
+        this.jToggleButton2 = jToggleButton2;
+    }
 
 }

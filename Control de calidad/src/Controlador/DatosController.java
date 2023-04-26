@@ -5,6 +5,7 @@
 package Controlador;
 
 import Modelo.*;
+import java.time.LocalDate;
 
 /**
  *
@@ -45,5 +46,56 @@ public class DatosController {
     
     public static void EliminarModelo(String SKU){
         datos.eliminarModelo(SKU);
+    }
+    
+    public static ModeloDeZapatilla getModeloPorSKU(String sku) {
+        ModeloDeZapatilla modelo = new ModeloDeZapatilla();
+        
+        for (ModeloDeZapatilla m: datos.getModels()) {
+            if (m.getSKU().equals(sku)) {
+                modelo = m;
+                break;
+            }
+        }
+        
+        return modelo;
+    }
+    
+    public static Color getColorPorCodigo(int codigo) {
+        Color color = new Color();
+        
+        for (Color m: datos.getColors()) {
+            if (m.getCodigo() == codigo) {
+                color = m;
+                break;
+            }
+        }
+        
+        return color;
+    }
+    
+    public static boolean iniciarOP(ModeloDeZapatilla modelo, Color color) {
+        LocalDate now = LocalDate.now();
+        
+        boolean opIniciada = datos.iniciarOP(1, now.getDayOfMonth(), now.getMonthValue(), now.getYear(), modelo, color, (SupervisorDeLinea) datos.getLoggedIn());
+    
+        return opIniciada;
+    }
+
+    public static int login(String nombre, String contraseña) {
+        Usuario usuario = datos.getUsuarioPorUsername(nombre);
+        
+        try {
+            if (usuario.getContraseña().equals(contraseña)) {
+                datos.setLoggedIn(usuario);
+                return Datos.LOGGEDIN;
+            }
+            else {
+                return Datos.CONTRASEÑA_INCORRECTA;
+            }
+        }
+        catch (Exception e) {
+            return Datos.USUARIO_INEXISTENTE;
+        }
     }
 }

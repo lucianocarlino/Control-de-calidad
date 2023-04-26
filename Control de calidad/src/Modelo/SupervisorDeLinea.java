@@ -14,8 +14,8 @@ public class SupervisorDeLinea extends Usuario{
     
     private LineaDeProduccion linea;
 
-    public SupervisorDeLinea(String nombreDeUsuario, String contraseña, long documento, String apynom, String email) {
-        super(nombreDeUsuario, contraseña, documento, apynom, email);
+    public SupervisorDeLinea(int id, String nombreDeUsuario, String contraseña, long documento, String apynom, String email) {
+        super(id, nombreDeUsuario, contraseña, documento, apynom, email);
     }
 
     public LineaDeProduccion getLinea() {

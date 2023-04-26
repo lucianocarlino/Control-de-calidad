@@ -9,18 +9,24 @@ package Modelo;
  * @author User
  */
 public class Usuario {
+    private int id;
     private String nombreDeUsuario;
     private String contraseña;
     private long documento;
     private String apynom;
     private String email;
 
-    public Usuario(String nombreDeUsuario, String contraseña, long documento, String apynom, String email) {
+    public Usuario(int id, String nombreDeUsuario, String contraseña, long documento, String apynom, String email) {
+        this.id = id;
         this.nombreDeUsuario = nombreDeUsuario;
         this.contraseña = contraseña;
         this.documento = documento;
         this.apynom = apynom;
         this.email = email;
+    }
+    
+    public Usuario() {
+        
     }
 
     public String getNombreDeUsuario() {
@@ -61,6 +67,10 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
     }
     
     

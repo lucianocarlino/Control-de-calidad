@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controlador;
+import Modelo.Datos;
 import Vista.VistaLogin;
 import Vista.*;
 import javax.swing.JOptionPane;
@@ -14,14 +15,18 @@ public class LoginController {
 
     public static void botonContinuar()
     {
-      String usuario=  ventana.getjTextField1().getText(); 
+       String usuario=  ventana.getjTextField1().getText(); 
        String clave = ventana.getjTextField2().getText();
-       if (usuario.equals("admin") && clave.equalsIgnoreCase("1234") ){
+       
+       int estadoLogin = DatosController.login(usuario, clave);
+       
+       if (estadoLogin == Datos.LOGGEDIN) {
            LoginController.ocultar();
            MenuController.mostrar();
        }
-       else{
-           JOptionPane.showMessageDialog(ventana, "Usuario o contraseña incorrectos");
+       else {
+           String mensaje = (estadoLogin == Datos.CONTRASEÑA_INCORRECTA) ? "Usuario o contraseña incorrectos" : "Usuario inexistente";
+           JOptionPane.showMessageDialog(ventana, mensaje);
            ventana.getTfUsuario().setText("");
            ventana.getTfClave().setText("");
        }

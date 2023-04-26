@@ -17,6 +17,8 @@ public class ModeloDeZapatilla {
         this.SKU = SKU;
         this.Denominacion = Denominacion;
     }
+    public ModeloDeZapatilla() {
+    }
 
     public String getSKU() {
         return SKU;

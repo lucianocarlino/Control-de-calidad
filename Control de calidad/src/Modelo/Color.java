@@ -17,7 +17,10 @@ public class Color {
         this.descripcion = descripcion;
         this.codigo = codigo;
     }
-
+    public Color() {
+        
+    }
+    
     public String getDescripcion() {
         return descripcion;
     }
