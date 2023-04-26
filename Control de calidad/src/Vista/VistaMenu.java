@@ -51,6 +51,11 @@ public class VistaMenu extends javax.swing.JFrame {
 
         jToggleButton2.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         jToggleButton2.setText("Gestión de Modelos");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
 
         jToggleButton3.setFont(new java.awt.Font("Liberation Sans", 0, 24)); // NOI18N
         jToggleButton3.setText("Gestión de Colores");
@@ -108,8 +113,12 @@ public class VistaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        // TODO add your handling code here:
+        Controlador.MenuController.btnColores();
     }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        Controlador.MenuController.btnModelos();
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

@@ -13,11 +13,24 @@ import Vista.*;
  */
 public class MenuController {
     public static VistaMenu  ventana = new VistaMenu();
-    public static void mostrar(){ ventana.setVisible(true);}
+    public static void mostrar(){ ventana.setVisible(true); ventana.setLocationRelativeTo(null);}
     public static void ocultar(){ventana.setVisible(false);}
     
     public static void botonOp(){
         OpController.mostrar();
         OpController.actualizar();
+        ocultar();
+    }
+    
+    public static void btnColores(){
+        ColoresController.mostrar();
+        
+        ocultar();
+    }
+    
+    public static void btnModelos(){
+        ModelosController.mostrar();
+        
+        ocultar();
     }
 }

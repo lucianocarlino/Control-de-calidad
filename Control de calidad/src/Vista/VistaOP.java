@@ -4,6 +4,7 @@
  */
 package Vista;
 
+import Controlador.OpController;
 import javax.swing.JComboBox;
 
 /**
@@ -55,6 +56,11 @@ public class VistaOP extends javax.swing.JFrame {
         jToggleButton1.setBackground(new java.awt.Color(204, 0, 0));
         jToggleButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jToggleButton1.setText("Cancelar ");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         jToggleButton2.setBackground(new java.awt.Color(0, 204, 0));
         jToggleButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -124,6 +130,10 @@ public class VistaOP extends javax.swing.JFrame {
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
        
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        OpController.btnCancelar();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBox1;

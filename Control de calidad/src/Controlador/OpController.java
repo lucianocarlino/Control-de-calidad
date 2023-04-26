@@ -18,7 +18,7 @@ import javax.swing.JComboBox;
  */
 public class OpController {
     public static VistaOP  ventana = new VistaOP();
-    public static void mostrar(){ ventana.setVisible(true);}
+    public static void mostrar(){ ventana.setVisible(true); ventana.setLocationRelativeTo(null);}
     public static void ocultar(){ventana.setVisible(false);}
     
     public static void actualizar(){
@@ -31,5 +31,10 @@ public class OpController {
 
         JComboBox listaColores = ventana.getjComboBox2();
         listaColores.setModel(new DefaultComboBoxModel(colores));
+    }
+    
+    public static void btnCancelar(){
+        ocultar();
+        MenuController.mostrar();
     }
 }
