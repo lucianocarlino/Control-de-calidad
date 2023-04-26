@@ -49,6 +49,34 @@ public class Datos {
         }
         return descrip.toArray();
     }
+    
+    public void eliminarColor(int codigo){
+        
+        int index = -1;
+        
+        for(Color c : colors){
+            if(c.getCodigo() == codigo){
+                index = colors.indexOf(c);
+                break;
+            }
+        }
+        
+        colors.remove(index);
+    }
+    
+    public void eliminarModelo(String codigo){
+        
+        int index = -1;
+        
+        for(ModeloDeZapatilla c : models){
+            if(c.getSKU() == codigo){
+                index = models.indexOf(c);
+                break;
+            }
+        }
+        
+        models.remove(index);
+    }
 
     public ArrayList<Color> getColors() {
         return colors;
@@ -65,6 +93,4 @@ public class Datos {
     public void setModels(ArrayList<ModeloDeZapatilla> models) {
         this.models = models;
     }
-    
-    
 }

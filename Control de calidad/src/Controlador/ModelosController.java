@@ -44,15 +44,23 @@ public class ModelosController {
         mostrarAgregar();
     }
     
+    public static void btnEliminar(){
+        int[] selected = ventana.getjTable1().getSelectedRows();
+        
+        for(int fila : selected){
+            String id = ventana.getjTable1().getValueAt(fila, 0).toString();
+            
+            DatosController.EliminarModelo(id);
+        }
+        
+        actualizarTabla();
+    }
+    
     public static void mostrarAgregar() {
         ventAgregar.setVisible(true);
         ventAgregar.setLocationRelativeTo(null);
         ventAgregar.getTfSKU().setText("");
         ventAgregar.getTfDenominacion().setText("");
-    }
-    
-    public static void btnEliminar(){
-        
     }
     
     public static void btnAgregar(){

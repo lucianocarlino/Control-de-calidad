@@ -52,7 +52,15 @@ public class ColoresController {
     }
     
     public static void btnEliminar(){
+        int[] selected = ventana.getjTable1().getSelectedRows();
         
+        for(int fila : selected){
+            int id = Integer.parseInt(ventana.getjTable1().getValueAt(fila, 0).toString());
+            
+            DatosController.EliminarColor(id);
+        }
+        
+        actualizarTabla();
     }
     
     public static void btnAgregar(){

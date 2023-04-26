@@ -20,4 +20,12 @@ public class DatosController {
     public static void AgregarModelo(ModeloDeZapatilla nuevo){
         datos.getModels().add(nuevo);
     }
+    
+    public static void EliminarColor(int codigo){
+        datos.eliminarColor(codigo);
+    }
+    
+    public static void EliminarModelo(String SKU){
+        datos.eliminarModelo(SKU);
+    }
 }

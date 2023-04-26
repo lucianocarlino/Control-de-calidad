@@ -84,7 +84,6 @@ public class GestionColores extends javax.swing.JFrame {
         }
 
         jButton1.setText("Eliminar");
-        jButton1.setEnabled(false);
         jButton1.setPreferredSize(new java.awt.Dimension(150, 23));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +140,7 @@ public class GestionColores extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Controlador.ColoresController.btnEliminar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
