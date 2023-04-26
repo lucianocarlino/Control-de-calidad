@@ -8,6 +8,7 @@ import Modelo.Color;
 import Modelo.Datos;
 import Vista.AgregarColor;
 import Vista.GestionColores;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -70,7 +71,16 @@ public class ColoresController {
         
         Color nuevo = new Color(descripcion, codigo);
         
-        DatosController.AgregarColor(nuevo);
+        System.out.println(codigo);
+        
+        if(codigo == 0 || descripcion == ""){
+            JOptionPane.showMessageDialog(ventana, "Error: Rellene los campos");
+            return;
+        }
+            
+        
+        if(!DatosController.AgregarColor(nuevo))
+            JOptionPane.showMessageDialog(ventana, "Error: Codigo ya usado");
         
         ventAgregar.getTfCodigo().setText("");
         ventAgregar.getTfDescripcion().setText("");

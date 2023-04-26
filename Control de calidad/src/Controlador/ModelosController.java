@@ -8,6 +8,7 @@ import Modelo.Datos;
 import Modelo.ModeloDeZapatilla;
 import Vista.AgregarModelo;
 import Vista.GestionModelos;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -70,7 +71,8 @@ public class ModelosController {
         
         ModeloDeZapatilla nuevo = new ModeloDeZapatilla(sku, denominacion);
         
-        DatosController.AgregarModelo(nuevo);
+        if(!DatosController.AgregarModelo(nuevo))
+            JOptionPane.showMessageDialog(ventana, "Error: SKU ya usado");;
         
         ventAgregar.getTfSKU().setText("");
         ventAgregar.getTfDenominacion().setText("");

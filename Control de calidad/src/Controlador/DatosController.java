@@ -13,12 +13,30 @@ import Modelo.*;
 public class DatosController {
     public static Datos datos = new Datos();
     
-    public static void AgregarColor(Color nuevo){
+    public static boolean AgregarColor(Color nuevo){
+        
+        int codigoNuevo = nuevo.getCodigo();
+        
+        for(Color c : datos.getColors()){
+            if(c.getCodigo() == codigoNuevo)
+                return false;
+        }
         datos.getColors().add(nuevo);
+        return true;
     }
     
-    public static void AgregarModelo(ModeloDeZapatilla nuevo){
+    public static boolean AgregarModelo(ModeloDeZapatilla nuevo){
+        
+        String codigoNuevo = nuevo.getSKU();
+        
+        for(ModeloDeZapatilla c : datos.getModels()){
+            if(codigoNuevo.equals(c.getSKU()))
+                return false;
+        }
+        
         datos.getModels().add(nuevo);
+        return true;
+        
     }
     
     public static void EliminarColor(int codigo){
