@@ -5,6 +5,7 @@
 package Controlador;
 import Vista.VistaLogin;
 import Vista.*;
+import javax.swing.JOptionPane;
 
 public class LoginController {
     public static VistaLogin  ventana = new VistaLogin();
@@ -20,7 +21,9 @@ public class LoginController {
            MenuController.mostrar();
        }
        else{
-           System.out.println("Usuario o Clave incorrectos"); 
+           JOptionPane.showMessageDialog(ventana, "Usuario o contraseña incorrectos");
+           ventana.getTfUsuario().setText("");
+           ventana.getTfClave().setText("");
        }
     }
     
