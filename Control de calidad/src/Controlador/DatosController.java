@@ -74,10 +74,10 @@ public class DatosController {
         return color;
     }
     
-    public static boolean iniciarOP(ModeloDeZapatilla modelo, Color color) {
-        LocalDate now = LocalDate.now();
+    public static boolean iniciarOP(ModeloDeZapatilla modelo, Color color, int cantidad) {
+        LocalDate ahora = LocalDate.now();
         
-        boolean opIniciada = datos.iniciarOP(1, now.getDayOfMonth(), now.getMonthValue(), now.getYear(), modelo, color, (SupervisorDeLinea) datos.getLoggedIn());
+        boolean opIniciada = datos.iniciarOP(1, ahora, modelo, color, cantidad, (SupervisorDeLinea) datos.getLoggedIn(), ((SupervisorDeLinea) datos.getLoggedIn()).getLinea());
     
         return opIniciada;
     }

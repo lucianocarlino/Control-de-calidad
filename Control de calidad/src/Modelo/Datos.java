@@ -4,6 +4,7 @@
  */
 package Modelo;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +22,7 @@ public class Datos {
     private ArrayList<ModeloDeZapatilla> models = new ArrayList<>();
     private OrdenDeProduccion ordenDeProduccion;
     private ArrayList<Usuario> usuarios = new ArrayList<>();
+    private ArrayList<LineaDeProduccion> lineas = new ArrayList<>();
 
     public Datos() {
         
@@ -36,7 +38,10 @@ public class Datos {
         models.add(new ModeloDeZapatilla("222", "Feo"));
         models.add(new ModeloDeZapatilla("333", "Masomenos"));
         
-        usuarios.add(new SupervisorDeLinea(1, "admin", "1234", 1234, "supervisor", "sup@mail.com"));
+        lineas.add(new LineaDeProduccion(1, "Linea 1"));
+        usuarios.add(new SupervisorDeLinea(1, "admin", "1234", 1234, "supervisor", "sup@mail.com", lineas.get(0)));
+        
+        lineas.add(new LineaDeProduccion(2, "Linea 2"));
         
         ordenDeProduccion = new OrdenDeProduccion();
         
@@ -104,9 +109,9 @@ public class Datos {
         this.models = models;
     }
     
-    public boolean iniciarOP(long id, int dia, int mes, int año, ModeloDeZapatilla modelo, Color color, SupervisorDeLinea supervisor) {
-        if (ordenDeProduccion.getEstado() == OrdenDeProduccion.NULA){
-            ordenDeProduccion = new OrdenDeProduccion(id, dia, mes, año, modelo, color, supervisor);
+    public boolean iniciarOP(long id, LocalDate fechaInicio, ModeloDeZapatilla modelo, Color color, int cantidad, SupervisorDeLinea supervisor, LineaDeProduccion linea) {
+        if (ordenDeProduccion.getEstado() == OrdenDeProduccion.NULA) {
+            ordenDeProduccion = new OrdenDeProduccion(id, fechaInicio, modelo, color, cantidad, supervisor, linea);
             return true;
         }
         else {

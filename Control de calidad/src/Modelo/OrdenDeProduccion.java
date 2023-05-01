@@ -4,6 +4,8 @@
  */
 package Modelo;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author User
@@ -15,22 +17,22 @@ public class OrdenDeProduccion {
     
     private long id;
     private int estado;
-    private int dia;
-    private int mes;
-    private int año;
+    private LocalDate fechaInicio;
+    private int cantidad;
     
     private ModeloDeZapatilla modelo;
     private Color color;
     private SupervisorDeLinea supervisor;
+    private LineaDeProduccion linea;
 
-    public OrdenDeProduccion(long id, int dia, int mes, int año, ModeloDeZapatilla modelo, Color color, SupervisorDeLinea supervisor) {
+    public OrdenDeProduccion(long id, LocalDate fechaInicio, ModeloDeZapatilla modelo, Color color, int cantidad, SupervisorDeLinea supervisor, LineaDeProduccion linea) {
         this.id = id;
-        this.dia = dia;
-        this.mes = mes;
-        this.año = año;
+        this.fechaInicio = fechaInicio;
         this.modelo = modelo;
         this.color = color;
+        this.cantidad = cantidad;
         this.supervisor = supervisor;
+        this.linea = linea;
         this.estado = INICIADA;
     }
 
@@ -78,29 +80,22 @@ public class OrdenDeProduccion {
         this.estado = estado;
     }
 
-    public int getDia() {
-        return dia;
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
     }
 
-    public void setDia(int dia) {
-        this.dia = dia;
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
 
-    public int getMes() {
-        return mes;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setMes(int mes) {
-        this.mes = mes;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
-    public int getAño() {
-        return año;
-    }
-
-    public void setAño(int año) {
-        this.año = año;
-    }
     
     
 }

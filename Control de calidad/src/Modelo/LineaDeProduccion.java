@@ -13,14 +13,9 @@ public class LineaDeProduccion {
     private int numero;
     private String descripcion;
     
-    private OrdenDeProduccion orden;
-
-    public OrdenDeProduccion getOrden() {
-        return orden;
-    }
-
-    public void setOrden(OrdenDeProduccion orden) {
-        this.orden = orden;
+    public LineaDeProduccion(int numero, String descripcion) {
+        this.numero = numero;
+        this.descripcion = descripcion;
     }
 
     public int getNumero() {

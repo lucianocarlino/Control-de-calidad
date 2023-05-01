@@ -4,6 +4,7 @@
  */
 package Modelo;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 /**
@@ -14,8 +15,9 @@ public class SupervisorDeLinea extends Usuario{
     
     private LineaDeProduccion linea;
 
-    public SupervisorDeLinea(int id, String nombreDeUsuario, String contraseña, long documento, String apynom, String email) {
+    public SupervisorDeLinea(int id, String nombreDeUsuario, String contraseña, long documento, String apynom, String email, LineaDeProduccion linea) {
         super(id, nombreDeUsuario, contraseña, documento, apynom, email);
+        this.linea = linea;
     }
 
     public LineaDeProduccion getLinea() {
@@ -25,34 +27,5 @@ public class SupervisorDeLinea extends Usuario{
     public void setLinea(LineaDeProduccion linea) {
         this.linea = linea;
     }
-    
-    public OrdenDeProduccion crearOrden(ModeloDeZapatilla Modelo, Color Color){
-        //instanciacion int id = datos.idOrdenes + 1; //Instanciacion
-        int estado = 0;
-        System.out.println("Ingrese el dia");
-        Scanner scanner = new Scanner(System.in);
-        int dia = scanner.nextInt();
-        System.out.println("Ingrese el mes");
-        int mes = scanner.nextInt();
-        System.out.println("Ingrese el anio");
-        int anio = scanner.nextInt();
-        ModeloDeZapatilla modelo = Modelo;
-        Color color = Color;
-        SupervisorDeLinea supervisor = this;
-        
-        OrdenDeProduccion orden = null;
-        
-        //orden.setId(id);
-        orden.setEstado(estado);
-        orden.setDia(dia);
-        orden.setMes(mes);
-        orden.setAño(anio);
-        orden.setModelo(modelo);
-        orden.setColor(color);
-        orden.setSupervisor(supervisor);
-        
-        return orden;
-    }
-    
 }
 
