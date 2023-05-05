@@ -41,13 +41,21 @@ public class OpController {
     public static void actualizar(){
         
         Object SKUs[] = DatosController.datos.getSKUA();
-        Object coloress[] = DatosController.datos.getCodigosA();
 
         JComboBox modelos = ventana.getjComboBox1();
         modelos.setModel(new DefaultComboBoxModel(SKUs));
 
-        JComboBox listaColores = ventana.getjComboBox2();
-        listaColores.setModel(new DefaultComboBoxModel(coloress));
+        actualizarColores();
+    }
+    
+    public static void actualizarColores(){
+        String modelos = ventana.getjComboBox1().getSelectedItem().toString().split("-")[0].trim();
+        
+        ModeloDeZapatilla modelo = DatosController.getModeloPorSKU(modelos);
+        
+         Object Codigos[] = DatosController.datos.getCodigosA(modelo);
+         
+         ventana.getjComboBox2().setModel(new DefaultComboBoxModel(Codigos));
     }
     
     public static void btnCancelar(){
@@ -56,14 +64,15 @@ public class OpController {
     }
     
     public static void btnIniciar(){
-        JComboBox modelos = ventana.getjComboBox1();
-        JComboBox colores = ventana.getjComboBox2();
+        String modelos = ventana.getjComboBox1().getSelectedItem().toString().split("-")[0].trim();
+        String colores = ventana.getjComboBox2().getSelectedItem().toString().split("-")[0].trim();
         
-        ModeloDeZapatilla modelo = DatosController.getModeloPorSKU(modelos.getSelectedItem().toString());
-        Color color = DatosController.getColorPorCodigo(Integer.parseInt(colores.getSelectedItem().toString()));
+        ModeloDeZapatilla modelo = DatosController.getModeloPorSKU(modelos);
+        Color color = DatosController.getColorPorCodigo(Integer.parseInt(colores));
+        int cantidad = 1;
         
-        boolean opIniciada = DatosController.iniciarOP(modelo, color);
-        
+        boolean opIniciada = DatosController.iniciarOP(modelo, color, cantidad);
+
         if (opIniciada) {
             JOptionPane.showMessageDialog(ventana, "La orden de producción fue iniciada");
             ventana.getjToggleButton1().setEnabled(false);

@@ -4,6 +4,8 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author User
@@ -12,10 +14,12 @@ public class ModeloDeZapatilla {
 
     private String SKU;
     private String Denominacion;
+    private ArrayList<Color> colores = new ArrayList<>();
 
-    public ModeloDeZapatilla(String SKU, String Denominacion) {
+    public ModeloDeZapatilla(String SKU, String Denominacion, ArrayList<Color> colores) {
         this.SKU = SKU;
         this.Denominacion = Denominacion;
+        this.colores = colores;
     }
     public ModeloDeZapatilla() {
     }
@@ -36,4 +40,18 @@ public class ModeloDeZapatilla {
         this.Denominacion = Denominacion;
     }
 
+    public ArrayList<Color> getColores() {
+        return colores;
+    }
+
+    public void setColores(ArrayList<Color> colores) {
+        this.colores = colores;
+    }
+
+    @Override
+    public String toString() {
+        return SKU + " - " + Denominacion;
+    }
+    
+    
 }

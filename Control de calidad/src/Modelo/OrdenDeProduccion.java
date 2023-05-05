@@ -96,6 +96,4 @@ public class OrdenDeProduccion {
         this.cantidad = cantidad;
     }
 
-    
-    
 }

@@ -169,7 +169,7 @@ public class VistaOPIniciada extends javax.swing.JFrame {
     
     public void setValores(OrdenDeProduccion ordenDeProduccion) {
         labelNumOrden.setText(String.valueOf(ordenDeProduccion.getId()));
-        labelFecha.setText(ordenDeProduccion.getDia()+"/"+ordenDeProduccion.getMes()+"/"+ordenDeProduccion.getAño());
+        //labelFecha.setText(ordenDeProduccion.getDia()+"/"+ordenDeProduccion.getMes()+"/"+ordenDeProduccion.getAño());
         labelEstado.setText(ordenDeProduccion.getEstado() == 1 ? "Iniciada" : "Error");
         labelModelo.setText(ordenDeProduccion.getModelo().getSKU()+" - "+ordenDeProduccion.getModelo().getDenominacion());
         labelColor.setText(ordenDeProduccion.getColor().getCodigo()+" - "+ordenDeProduccion.getColor().getDescripcion());

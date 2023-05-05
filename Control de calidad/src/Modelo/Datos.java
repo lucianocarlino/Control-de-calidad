@@ -34,9 +34,9 @@ public class Datos {
         colors.add(new Color("Verde", 444));
         colors.add(new Color("Morado", 555));
         
-        models.add(new ModeloDeZapatilla("111", "Lindo"));
-        models.add(new ModeloDeZapatilla("222", "Feo"));
-        models.add(new ModeloDeZapatilla("333", "Masomenos"));
+        models.add(new ModeloDeZapatilla("111", "Lindo", colors));
+        models.add(new ModeloDeZapatilla("222", "Feo", colors));
+        models.add(new ModeloDeZapatilla("333", "Masomenos", colors));
         
         lineas.add(new LineaDeProduccion(1, "Linea 1"));
         usuarios.add(new SupervisorDeLinea(1, "admin", "1234", 1234, "supervisor", "sup@mail.com", lineas.get(0)));
@@ -49,19 +49,30 @@ public class Datos {
     
     public Object[] getSKUA(){
         
-        ArrayList<String> SKUs = new ArrayList<>();
+        /*ArrayList<String> SKUs = new ArrayList<>();
         for (ModeloDeZapatilla m : models){
             SKUs.add(m.getSKU());
+        }
+        return SKUs.toArray();*/
+        
+        ArrayList<String> SKUs = new ArrayList<>();
+        for (ModeloDeZapatilla m : models){
+            SKUs.add(m.toString());
         }
         return SKUs.toArray();
     }
     
-    public Object[] getCodigosA(){
+    public Object[] getCodigosA(ModeloDeZapatilla model){
         
-        ArrayList<Integer> codigos = new ArrayList<>();
-        for (Color m : colors){
+        ArrayList<String> codigos = new ArrayList<>();
+        /*for (Color m : colors){
             codigos.add(m.getCodigo());
+        }*/
+        
+        for (Color m : model.getColores()){
+            codigos.add(m.toString());
         }
+        
         return codigos.toArray();
     }
     
