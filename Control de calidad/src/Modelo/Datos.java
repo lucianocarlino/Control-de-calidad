@@ -70,7 +70,9 @@ public class Datos {
         }*/
         
         for (Color m : model.getColores()){
-            codigos.add(m.toString());
+            if (!m.getBajaLogica()) {
+                codigos.add(m.toString());
+            }
         }
         
         return codigos.toArray();
@@ -83,11 +85,10 @@ public class Datos {
         for(Color c : colors){
             if(c.getCodigo() == codigo){
                 index = colors.indexOf(c);
+                c.setBajaLogica(Boolean.TRUE);
                 break;
             }
         }
-        
-        colors.remove(index);
     }
     
     public void eliminarModelo(String codigo){

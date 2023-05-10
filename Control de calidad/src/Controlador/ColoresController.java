@@ -32,12 +32,14 @@ public class ColoresController {
                
         tabla.setNumRows(0);
         for(Color p : DatosController.datos.getColors()){
-            Object[] fila = new Object[2];
-            
-            fila[0] = p.getCodigo();
-            fila[1] = p.getDescripcion();
-            
-            tabla.addRow(fila);
+                if (!p.getBajaLogica()) {
+                Object[] fila = new Object[2];
+
+                fila[0] = p.getCodigo();
+                fila[1] = p.getDescripcion();
+
+                tabla.addRow(fila);
+            }
         }
     }
     

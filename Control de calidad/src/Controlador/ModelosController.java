@@ -72,13 +72,15 @@ public class ModelosController {
                
         tabla.setNumRows(0);
         for(Color p : DatosController.datos.getColors()){
-            Object[] fila = new Object[3];
-            
-            fila[0] = false;
-            fila[1] = p.getCodigo();
-            fila[2] = p.getDescripcion();
-            
-            tabla.addRow(fila);
+                if (!p.getBajaLogica()) {
+                Object[] fila = new Object[3];
+
+                fila[0] = false;
+                fila[1] = p.getCodigo();
+                fila[2] = p.getDescripcion();
+
+                tabla.addRow(fila);
+            }
         }
     }
     

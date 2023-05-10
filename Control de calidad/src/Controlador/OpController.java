@@ -53,9 +53,9 @@ public class OpController {
         
         ModeloDeZapatilla modelo = DatosController.getModeloPorSKU(modelos);
         
-         Object Codigos[] = DatosController.datos.getCodigosA(modelo);
+        Object Codigos[] = DatosController.datos.getCodigosA(modelo);
          
-         ventana.getjComboBox2().setModel(new DefaultComboBoxModel(Codigos));
+        ventana.getjComboBox2().setModel(new DefaultComboBoxModel(Codigos));
     }
     
     public static void btnCancelar(){

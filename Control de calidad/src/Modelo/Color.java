@@ -12,6 +12,8 @@ public class Color {
     
     private String descripcion;
     private int codigo;
+    
+    private Boolean bajaLogica = false;
 
     public Color(String descripcion, int codigo) {
         this.descripcion = descripcion;
@@ -37,10 +39,16 @@ public class Color {
         this.codigo = codigo;
     }
 
+    public Boolean getBajaLogica() {
+        return bajaLogica;
+    }
+
+    public void setBajaLogica(Boolean bajaLogica) {
+        this.bajaLogica = bajaLogica;
+    }
+    
     @Override
     public String toString() {
         return codigo + " - " + descripcion;
     }
-    
-    
 }
