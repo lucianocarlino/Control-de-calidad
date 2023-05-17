@@ -14,6 +14,7 @@ public class OrdenDeProduccion {
 
     public final static int NULA = 0;
     public final static int INICIADA = 1;
+    public final static int TERMINADA = 2;
     
     private long id;
     private int estado;
@@ -38,6 +39,10 @@ public class OrdenDeProduccion {
 
     OrdenDeProduccion() {
         this.estado = NULA;
+    }
+    
+    public void terminar() {
+        this.estado = OrdenDeProduccion.TERMINADA;
     }
 
     public SupervisorDeLinea getSupervisor() {
@@ -76,10 +81,6 @@ public class OrdenDeProduccion {
         return estado;
     }
 
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
-
     public LocalDate getFechaInicio() {
         return fechaInicio;
     }
@@ -94,6 +95,14 @@ public class OrdenDeProduccion {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public LineaDeProduccion getLinea() {
+        return linea;
+    }
+
+    public void setLinea(LineaDeProduccion linea) {
+        this.linea = linea;
     }
 
 }

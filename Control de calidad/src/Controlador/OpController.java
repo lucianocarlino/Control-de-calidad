@@ -24,9 +24,15 @@ import javax.swing.JOptionPane;
 public class OpController {
     public static VistaOP ventana = new VistaOP();
     public static VistaOPIniciada ventanaOPI = new VistaOPIniciada();
-    public static void mostrar(){ ventana.setVisible(true); ventana.setLocationRelativeTo(null);}
+    public static void mostrar(){
+        boolean activarBotones = (DatosController.datos.buscarOPI().getEstado() != OrdenDeProduccion.INICIADA);
+        ventana.getjButton1().setEnabled(activarBotones);
+        ventana.getjButton2().setEnabled(activarBotones);
+        ventana.setVisible(true); 
+        ventana.setLocationRelativeTo(null);
+    }
     public static void mostrarOPI(){
-        ventanaOPI.setValores(DatosController.datos.getOrdenDeProduccion());
+        ventanaOPI.setValores(DatosController.datos.buscarOPI());
         ventanaOPI.setLocationRelativeTo(null);
         ventanaOPI.setVisible(true);
     }
@@ -54,8 +60,10 @@ public class OpController {
         ModeloDeZapatilla modelo = DatosController.getModeloPorSKU(modelos);
         
         Object Codigos[] = DatosController.datos.getCodigosA(modelo);
+        Object Numeros[] = DatosController.getNumerosLineas();
          
         ventana.getjComboBox2().setModel(new DefaultComboBoxModel(Codigos));
+        ventana.getjComboBox3().setModel(new DefaultComboBoxModel(Numeros));
     }
     
     public static void btnCancelar(){
@@ -66,22 +74,26 @@ public class OpController {
     public static void btnIniciar(){
         String modelos = ventana.getjComboBox1().getSelectedItem().toString().split("-")[0].trim();
         String colores = ventana.getjComboBox2().getSelectedItem().toString().split("-")[0].trim();
+        String lineas = ventana.getjComboBox3().getSelectedItem().toString().split("-")[0].trim();
+        int cantidad = Integer.parseInt(ventana.getTextFieldCantidad().getText());
         
         ModeloDeZapatilla modelo = DatosController.getModeloPorSKU(modelos);
         Color color = DatosController.getColorPorCodigo(Integer.parseInt(colores));
-        int cantidad = 1;
+        LineaDeProduccion linea = DatosController.getLineaPorNumero(Integer.parseInt(lineas));
         
-        boolean opIniciada = DatosController.iniciarOP(modelo, color, cantidad);
+        boolean opIniciada = DatosController.iniciarOP(modelo, color, linea, cantidad);
 
         if (opIniciada) {
             JOptionPane.showMessageDialog(ventana, "La orden de producción fue iniciada");
-            ventana.getjToggleButton1().setEnabled(false);
-            ventana.getjToggleButton2().setEnabled(false);
-            
             mostrarOPI();
         }
         else {
             JOptionPane.showMessageDialog(ventana, "Error iniciando la orden de produccion");
         }
+    }
+
+    public static void terminarProduccion() {
+        DatosController.datos.buscarOPI().terminar();
+        cerrar();
     }
 }

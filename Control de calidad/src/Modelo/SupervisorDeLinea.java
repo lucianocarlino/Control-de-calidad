@@ -12,20 +12,9 @@ import java.util.Scanner;
  * @author User
  */
 public class SupervisorDeLinea extends Usuario{
-    
-    private LineaDeProduccion linea;
 
-    public SupervisorDeLinea(int id, String nombreDeUsuario, String contraseña, long documento, String apynom, String email, LineaDeProduccion linea) {
+    public SupervisorDeLinea(int id, String nombreDeUsuario, String contraseña, long documento, String apynom, String email) {
         super(id, nombreDeUsuario, contraseña, documento, apynom, email);
-        this.linea = linea;
-    }
-
-    public LineaDeProduccion getLinea() {
-        return linea;
-    }
-
-    public void setLinea(LineaDeProduccion linea) {
-        this.linea = linea;
     }
 }
 

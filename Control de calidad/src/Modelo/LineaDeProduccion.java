@@ -13,9 +13,14 @@ public class LineaDeProduccion {
     private int numero;
     private String descripcion;
     
+    private Boolean bajaLogica = false;
+    
     public LineaDeProduccion(int numero, String descripcion) {
         this.numero = numero;
         this.descripcion = descripcion;
+    }
+    public LineaDeProduccion() {
+        
     }
 
     public int getNumero() {
@@ -33,5 +38,17 @@ public class LineaDeProduccion {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
- 
+
+    public Boolean getBajaLogica() {
+        return bajaLogica;
+    }
+
+    public void setBajaLogica(Boolean bajaLogica) {
+        this.bajaLogica = bajaLogica;
+    }
+
+    @Override
+    public String toString() {
+        return numero + " - " + descripcion;
+    }
 }

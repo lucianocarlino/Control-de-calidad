@@ -15,6 +15,8 @@ public class ModeloDeZapatilla {
     private String SKU;
     private String Denominacion;
     private ArrayList<Color> colores = new ArrayList<>();
+    
+    private Boolean bajaLogica = false;
 
     public ModeloDeZapatilla(String SKU, String Denominacion, ArrayList<Color> colores) {
         this.SKU = SKU;
@@ -46,6 +48,14 @@ public class ModeloDeZapatilla {
 
     public void setColores(ArrayList<Color> colores) {
         this.colores = colores;
+    }
+
+    public Boolean getBajaLogica() {
+        return bajaLogica;
+    }
+
+    public void setBajaLogica(Boolean bajaLogica) {
+        this.bajaLogica = bajaLogica;
     }
 
     @Override

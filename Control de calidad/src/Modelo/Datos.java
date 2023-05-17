@@ -20,7 +20,7 @@ public class Datos {
     private Usuario loggedIn;
     private ArrayList<Color> colors = new ArrayList<>();
     private ArrayList<ModeloDeZapatilla> models = new ArrayList<>();
-    private OrdenDeProduccion ordenDeProduccion;
+    private ArrayList<OrdenDeProduccion> ordenes = new ArrayList<>();
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private ArrayList<LineaDeProduccion> lineas = new ArrayList<>();
 
@@ -39,12 +39,9 @@ public class Datos {
         models.add(new ModeloDeZapatilla("333", "Masomenos", colors));
         
         lineas.add(new LineaDeProduccion(1, "Linea 1"));
-        usuarios.add(new SupervisorDeLinea(1, "admin", "1234", 1234, "supervisor", "sup@mail.com", lineas.get(0)));
+        usuarios.add(new SupervisorDeLinea(1, "admin", "1234", 1234, "supervisor", "sup@mail.com"));
         
         lineas.add(new LineaDeProduccion(2, "Linea 2"));
-        
-        ordenDeProduccion = new OrdenDeProduccion();
-        
     }
     
     public Object[] getSKUA(){
@@ -57,7 +54,9 @@ public class Datos {
         
         ArrayList<String> SKUs = new ArrayList<>();
         for (ModeloDeZapatilla m : models){
-            SKUs.add(m.toString());
+            if (!m.getBajaLogica()) {
+                SKUs.add(m.toString());
+            }
         }
         return SKUs.toArray();
     }
@@ -105,6 +104,19 @@ public class Datos {
         models.remove(index);
     }
 
+    public void eliminarLinea(int numero) {
+        int index = -1;
+        
+        for(LineaDeProduccion l : lineas){
+            if(l.getNumero() == numero){
+                index = lineas.indexOf(l);
+                break;
+            }
+        }
+        
+        lineas.remove(index);
+    }
+
     public ArrayList<Color> getColors() {
         return colors;
     }
@@ -121,9 +133,23 @@ public class Datos {
         this.models = models;
     }
     
-    public boolean iniciarOP(long id, LocalDate fechaInicio, ModeloDeZapatilla modelo, Color color, int cantidad, SupervisorDeLinea supervisor, LineaDeProduccion linea) {
-        if (ordenDeProduccion.getEstado() == OrdenDeProduccion.NULA) {
-            ordenDeProduccion = new OrdenDeProduccion(id, fechaInicio, modelo, color, cantidad, supervisor, linea);
+    public OrdenDeProduccion buscarOPI() {
+        OrdenDeProduccion opi = new OrdenDeProduccion();
+        
+        for (OrdenDeProduccion o: ordenes) {
+            if (o.getEstado() == OrdenDeProduccion.INICIADA) {
+                opi = o;
+                break;
+            }
+        }
+        
+        return opi;
+    }
+    
+    public boolean iniciarOP(LocalDate fechaInicio, ModeloDeZapatilla modelo, Color color, int cantidad, SupervisorDeLinea supervisor, LineaDeProduccion linea) {
+        if (buscarOPI().getEstado() != OrdenDeProduccion.INICIADA) {
+            OrdenDeProduccion o = new OrdenDeProduccion(ordenes.size() + 1, fechaInicio, modelo, color, cantidad, supervisor, linea);
+            ordenes.add(o);
             return true;
         }
         else {
@@ -131,8 +157,8 @@ public class Datos {
         }
     }
 
-    public OrdenDeProduccion getOrdenDeProduccion() {
-        return ordenDeProduccion;
+    public ArrayList<OrdenDeProduccion> getOrdenesDeProduccion() {
+        return ordenes;
     }
     
     public Usuario getUsuarioPorId(int id) {
@@ -168,5 +194,12 @@ public class Datos {
     public void setLoggedIn(Usuario loggedIn) {
         this.loggedIn = loggedIn;
     }
-    
+
+    public ArrayList<LineaDeProduccion> getLineas() {
+        return lineas;
+    }
+
+    public void setLineas(ArrayList<LineaDeProduccion> lineas) {
+        this.lineas = lineas;
+    }
 }
